@@ -4,5 +4,6 @@ WORKDIR /app
 
 COPY requirement.txt requirement.txt
 RUN pip install --no-cache-dir -r requirement.txt
+COPY ...
 EXPOSE 8080
 CMD ["python","python.py"]
