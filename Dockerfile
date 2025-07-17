@@ -1,6 +1,8 @@
-FROM python: 3.11-slim
+FROM python:3.11-slim
 
-WORKDIR/ app
+WORKDIR /app
 
-COPY...
-CMD["python","python.py"]
+COPY requirement.txt requirement.txt
+RUN pip install --no-cache-dir -r requirement.txt
+EXPOSE 8080
+CMD ["python","python.py"]
