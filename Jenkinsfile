@@ -17,8 +17,8 @@ pipeline {
         }
         stage('Push to Dashboard') {
             steps {
-               withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS'))]){
-              bat ***
+              withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                bat ***
                 echo %Docker_PASS% |
                 docker login -u %Docker_USER% --password - stdin
                 docker push %IMAGE_NAME%:latest
