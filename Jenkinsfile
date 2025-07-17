@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-      IMAGE_NAME 'DockerFile/Docker_pratice'
+      IMAGE_NAME ='DockerFile/Docker_pratice'
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Push to Dashboard') {
             steps {
-               withcredidentials([usernamePassword(credenitailsID 'Docker', usernameVariable: 'Docker_USER', password: 'Docker_PASS')]){
+               withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS'))]){
               bat ***
                 echo %Docker_PASS% |
                 docker login -u %Docker_USER% --password - stdin
